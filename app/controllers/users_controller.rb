@@ -17,16 +17,29 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(username: params["username"])
-        if user.save
-            render json: UserSerializer.new(user).to_serialized_json
-        end
+        user = User.create(user_params)
+        render json: UserSerializer.new(user).to_serialized_json
     end
+
+    def login
+        @user = User.find_by(username:params[:username])
+
+        if @user && @user.authenticate(params[:password])
+            render json: @user
+        else
+            render json: {error: "Incorrect username or password. Please try again."}
+        end 
+    end 
 
     def destroy
         user = User.find_by(id: params[:id])
         user.delete
         render json: UserSerializer.new(user).to_serialized_json
     end
+
+    private 
+    def user_params
+        params.permit(:username, :password)
+    end 
 
 end

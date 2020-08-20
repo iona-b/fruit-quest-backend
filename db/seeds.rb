@@ -17,8 +17,8 @@
 # level2 = Level.create(level_name: 'Medium', difficulty_level: 'Medium')
 # level3 = Level.create(level_name: 'Hard', difficulty_level: 'Hard')
 
-# score1 = Score.create(score: 19, user: user1, level: level1)
-# score2 = Score.create(score: 77, user: user2, level: level1)
-# score3 = Score.create(score: 26, user: user3, level: level2)
-# score4 = Score.create(score: 40, user: user4, level: level3)
-# score5 = Score.create(score: 100, user: user5, level: level3)
+# score1 = Score.create(score: 19, user: User.first, level: level1)
+# score2 = Score.create(score: 77, user: User.second, level: level1)
+# score3 = Score.create(score: 26, user: User.third, level: level2)
+# score4 = Score.create(score: 40, user: User.fourth, level: level3)
+# score5 = Score.create(score: 100, user: User.fifth, level: level3)
