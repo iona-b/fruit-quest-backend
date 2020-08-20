@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
     def destroy
         user = User.find_by(id: params[:id])
+        user.scores.destroy_all
         user.delete
         render json: UserSerializer.new(user).to_serialized_json
     end
